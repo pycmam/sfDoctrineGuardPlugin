@@ -55,6 +55,7 @@ sfGuardUser:
   columns:
     first_name: string(255)
     last_name: string(255)
+    phone: string(255)
     email_address:
       type: string(255)
       notnull: true
