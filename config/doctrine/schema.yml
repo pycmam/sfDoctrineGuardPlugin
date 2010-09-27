@@ -1,3 +1,7 @@
+options:
+  type: INNODB
+  charset: utf8
+
 sfGuardGroup:
   actAs: [Timestampable]
   columns:
@@ -53,8 +57,12 @@ sfGuardGroupPermission:
 sfGuardUser:
   actAs: [Timestampable]
   columns:
-    first_name: string(255)
-    last_name: string(255)
+    first_name: 
+      type: string(255)
+      notnull: true
+    last_name:
+      type: string(255)
+      notnull: true
     email_address:
       type: string(255)
       notnull: true
@@ -68,10 +76,24 @@ sfGuardUser:
       default: sha1
       notnull: true
     salt: string(128)
-    password: string(128)
+    description: string(1024)
+    sms_count: string(255)
+    personal_price: { type: decimal(5), scale: 2, notnull: true, default: 0 }
+    balance:
+      type: decimal
+      length: 10
+      scale: 2
+      notnull: true
+      default: 0
+    api_key:
+      type: string(255)
+      notnull: true
+    password:
+      type: string(255)
+      notnull: true
     is_active:
       type: boolean
-      default: 1
+      default: 0
     is_super_admin:
       type: boolean
       default: false

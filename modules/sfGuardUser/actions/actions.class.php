@@ -13,4 +13,26 @@ require_once dirname(__FILE__).'/../lib/sfGuardUserGeneratorHelper.class.php';
  */
 class sfGuardUserActions extends autoSfGuardUserActions
 {
+    public function executeShow()
+    {
+        $this->user = $this->getRoute()->getObject();
+    }
+
+    public function executeActivate($request)
+    {
+        $request->checkCSRFProtection();
+
+        $user = $this->getRoute()->getObject();
+
+        $user->setIsActive(true);
+        $user->save();
+
+        $this->getMailer()->createAndSend($user->getEmailAddress(),
+            'Ваша заявка на регистрацию на сервисе LittleSMS.ru подтверждена',
+            $this->getPartial('global/mail/activate.txt', array(
+                'user' => $user,
+            )));
+
+        $this->redirect('sfGuardUser');
+    }
 }

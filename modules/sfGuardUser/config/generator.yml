@@ -12,20 +12,30 @@ generator:
 
     config:
       fields:
-        password_again: { label: "Password (again)" }
-
+        username:       { label: Логин }
+        password:       { label: Пароль }
+        first_name:     { label: Имя }
+        last_name:      { label: Фамилия }
+        balance:        { label: Баланс }
+        is_active:      { label: Статус }
+        api_key:        { label: API KEY }
+        password_again: { label: "Пароль (снова)" }
+        last_login:     { label: Вход }
+        email_address:  { label: email }
+        link_to_activate: { label: Статус }
       list:
-        title:   User list
-        display: [=username, created_at, updated_at, last_login]
-
+        title:   Аккаунты <a href="#" onclick="jQuery('#sf_admin_bar').slideToggle('slow')">(поиск)</a>
+        display: [id, _link_to_show, first_name, last_name, email_address, balance, _link_to_activate, created_at, last_login]
+      filter:
+        display: [username, email_address, first_name, last_name, is_active]
       form:
         class: sfGuardUserAdminForm
         display:
-          "User":                   [first_name, last_name, email_address, username, password, password_again]
-          "Permissions and groups": [is_active, is_super_admin, groups_list, permissions_list]
-
+          "Аккаунт":                [username, password, password_again]
+          "Профиль":                [first_name, last_name, email_address, api_key]
+          "Счет":                   [balance]
+          "Права и группы":         [is_active, is_super_admin, groups_list, permissions_list]
       edit:
-        title: Editing User "%%username%%"
-
+        title: Редактирование аккаунта "%%username%%"
       new:
-        title: New User
+        title: Новый аккаунт
