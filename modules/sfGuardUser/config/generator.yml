@@ -33,7 +33,7 @@ generator:
         display:
           "Аккаунт":                [username, password, password_again]
           "Профиль":                [first_name, last_name, email_address, api_key]
-          "Счет":                   [balance]
+          "Счет":                   [balance, personal_price]
           "Права и группы":         [is_active, is_super_admin, groups_list, permissions_list]
       edit:
         title: Редактирование аккаунта "%%username%%"
