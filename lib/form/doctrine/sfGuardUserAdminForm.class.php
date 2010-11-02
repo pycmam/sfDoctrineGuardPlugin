@@ -15,5 +15,6 @@ class sfGuardUserAdminForm extends BasesfGuardUserAdminForm
    */
   public function configure()
   {
+      unset($this['balance'], $this['permissions_list'], $this['groups_list']);
   }
 }

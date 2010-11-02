@@ -23,18 +23,19 @@ generator:
         last_login:     { label: Вход }
         email_address:  { label: email }
         link_to_activate: { label: Статус }
+        personal_price: { label: Персональная цена }
+        is_super_admin: { label: Администратор }
       list:
         title:   Аккаунты <a href="#" onclick="jQuery('#sf_admin_bar').slideToggle('slow')">(поиск)</a>
-        display: [id, _link_to_show, first_name, last_name, email_address, balance, _link_to_activate, created_at, last_login]
+        display: [id, =username, first_name, last_name, email_address, _balance, _link_to_activate, created_at, last_login]
       filter:
         display: [username, email_address, first_name, last_name, is_active]
       form:
         class: sfGuardUserAdminForm
         display:
-          "Аккаунт":                [username, password, password_again]
+          "Аккаунт":                [username, password, password_again, personal_price]
           "Профиль":                [first_name, last_name, email_address, api_key]
-          "Счет":                   [balance, personal_price]
-          "Права и группы":         [is_active, is_super_admin, groups_list, permissions_list]
+          "Права и группы":         [is_active, is_super_admin]
       edit:
         title: Редактирование аккаунта "%%username%%"
       new:
