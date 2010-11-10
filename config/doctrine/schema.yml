@@ -79,6 +79,23 @@ sfGuardUser:
     description: string(1024)
     sms_count: string(255)
     personal_price: { type: decimal(5), scale: 2, notnull: true, default: 0 }
+
+    phone: { type: string(12) }
+    phone_is_confirmed: { type: boolean, notnull: true, default: false }
+    phone_confirmation_code: { type: string(10) }
+
+    # уведомления о состоянии счета
+    notify_balance_enabled: { type: boolean, notnull: true, default: true }
+    notify_balance_value: { type: decimal(8), scale: 2, notnull: true, default: 5 }
+    notify_balance_sent: { type: boolean, notnull: true, default: false }
+
+    # уведомления о платеже
+    notify_payment_enabled: { type: boolean, notnull: true, default: true }
+
+    # отправлять на:
+    notify_email_enabled: { type: boolean, notnull: true, default: true }
+    notify_phone_enabled: { type: boolean, notnull: true, default: false }
+
     balance:
       type: decimal
       length: 10
