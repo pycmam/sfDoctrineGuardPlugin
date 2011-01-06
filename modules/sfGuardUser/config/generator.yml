@@ -12,22 +12,27 @@ generator:
 
     config:
       fields:
+        id:             { label: № }
         username:       { label: Логин }
+        user:           { label: Пользователь }
         password:       { label: Пароль }
         first_name:     { label: Имя }
         last_name:      { label: Фамилия }
         balance:        { label: Баланс }
-        is_active:      { label: Статус }
+        is_active:      { label: Активен }
         api_key:        { label: API KEY }
         password_again: { label: "Пароль (снова)" }
-        last_login:     { label: Вход }
-        email_address:  { label: email }
+        last_login:     { label: Вход, date_format: 'dd.MM.yy HH:mm' }
+        created_at:     { label: Регистрация, date_format: 'dd.MM.yy HH:mm' }
+        email_address:  { label: E-mail }
         link_to_activate: { label: Статус }
         personal_price: { label: Персональная цена }
         is_super_admin: { label: Администратор }
       list:
-        title:   Аккаунты <a href="#" onclick="jQuery('#sf_admin_bar').slideToggle('slow')">(поиск)</a>
-        display: [id, =username, first_name, last_name, email_address, _balance, _link_to_activate, created_at, last_login]
+        title:   Пользователи | <a href="#" onclick="jQuery('#sf_admin_bar').slideToggle('fast')">фильтр &darr;</a>
+        display: [id, _user, email_address, _balance, _link_to_activate, created_at]
+        object_actions:
+          _edit: ~
       filter:
         display: [username, email_address, first_name, last_name, is_active]
       form:

@@ -13,11 +13,17 @@ require_once dirname(__FILE__).'/../lib/sfGuardUserGeneratorHelper.class.php';
  */
 class sfGuardUserActions extends autoSfGuardUserActions
 {
+    /**
+     * Просмотр
+     */
     public function executeShow()
     {
-        $this->user = $this->getRoute()->getObject();
+        $this->sf_guard_user = $this->getRoute()->getObject();
     }
 
+    /**
+     * Активировать
+     */
     public function executeActivate($request)
     {
         $request->checkCSRFProtection();

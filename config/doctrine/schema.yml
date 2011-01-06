@@ -96,6 +96,15 @@ sfGuardUser:
     notify_email_enabled: { type: boolean, notnull: true, default: true }
     notify_phone_enabled: { type: boolean, notnull: true, default: false }
 
+    # сохранять sender из api
+    api_save_sender:      { type: boolean, notnull: true, default: true }
+
+    # сохранять контакты из api
+    api_save_contacts:    { type: boolean, notnull: true, default: true }
+
+    # помечать контакты тегом
+    api_tag_id:           { type: integer }
+
     balance:
       type: decimal
       length: 10

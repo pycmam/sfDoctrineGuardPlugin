@@ -15,5 +15,7 @@ class sfGuardFormSignin extends BasesfGuardFormSignin
    */
   public function configure()
   {
+      $this->widgetSchema->setFormFormatterName('myList');
+      $this->disableLocalCSRFProtection();
   }
 }
