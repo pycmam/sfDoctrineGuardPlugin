@@ -77,9 +77,11 @@ sfGuardUser:
       notnull: true
     salt: string(128)
     description: string(1024)
-    sms_count: string(255)
+
+    # персональная цена на смс
     personal_price: { type: decimal(5), scale: 2, notnull: true, default: 0 }
 
+    # мобильный
     phone: { type: string(12) }
     phone_is_confirmed: { type: boolean, notnull: true, default: false }
     phone_confirmation_code: { type: string(10) }
@@ -105,15 +107,36 @@ sfGuardUser:
     # помечать контакты тегом
     api_tag_id:           { type: integer }
 
+    # партнер от которого пришел клиент
+    referer_id:           { type: integer }
+
+    # партнерское вознаграждение
+    reward_balance:
+      type: decimal
+      length: 10
+      scale: 2
+      notnull: true
+      default: 0
+
+    # размер вознаграждения в %
+    reward_size:
+      type: integer(2)
+      notnull: true
+      default: 10
+
+    # баланс пользователя
     balance:
       type: decimal
       length: 10
       scale: 2
       notnull: true
       default: 0
+
+    # ключ подписи api-запросов
     api_key:
       type: string(255)
       notnull: true
+
     password:
       type: string(255)
       notnull: true
@@ -129,6 +152,11 @@ sfGuardUser:
     is_active_idx:
       fields: [is_active]
   relations:
+    Referer:
+      class: sfGuardUser
+      local: referer_id
+      foreign: id
+      onDelete: SET NULL
     Groups:
       class: sfGuardGroup
       local: user_id

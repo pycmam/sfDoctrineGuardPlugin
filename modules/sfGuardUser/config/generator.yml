@@ -26,6 +26,18 @@ generator:
         created_at:     { label: Регистрация, date_format: 'dd.MM.yy HH:mm' }
         email_address:  { label: E-mail }
         link_to_activate: { label: Статус }
+        reward_balance: { label: Партнерский баланс }
+        reward_size:    { label: Размер вознаграждения }
+        phone:          { label: Мобильный }
+        phone_is_confirmed: { label: Мобильный подтвержден }
+        api_save_sender: { label: Сохранять имя отправителя }
+        api_save_contacts: { label: Сохранять номера }
+        api_tag_id:     { label: Применять тег }
+        notify_email_enabled: { label: На email }
+        notify_phone_enabled: { label: На мобильный }
+        notify_balance_enabled: { label: При низком балансе }
+        notify_payment_enabled: { label: При оплате счета }
+        notify_balance_value: { label: Порог баланса }
         personal_price: { label: Персональная цена }
         is_super_admin: { label: Администратор }
       list:
@@ -34,12 +46,15 @@ generator:
         object_actions:
           _edit: ~
       filter:
-        display: [username, email_address, first_name, last_name, is_active]
+        display: [username, email_address, first_name, last_name, is_active, referer_id]
       form:
         class: sfGuardUserAdminForm
         display:
           "Аккаунт":                [username, password, password_again, personal_price]
-          "Профиль":                [first_name, last_name, email_address, api_key]
+          "Партнеские":             [reward_balance, reward_size]
+          "Профиль":                [first_name, last_name, email_address, phone, phone_is_confirmed]
+          "API":                    [api_key, api_save_sender, api_save_contacts, api_tag_id]
+          "Уведомления":            [notify_email_enabled, notify_phone_enabled, notify_payment_enabled, notify_balance_enabled, notify_balance_value]
           "Права и группы":         [is_active, is_super_admin]
       edit:
         title: Редактирование аккаунта "%%username%%"

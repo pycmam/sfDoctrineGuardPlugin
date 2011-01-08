@@ -15,6 +15,29 @@ class sfGuardUserAdminForm extends BasesfGuardUserAdminForm
    */
   public function configure()
   {
-      unset($this['balance'], $this['permissions_list'], $this['groups_list']);
+      unset($this['balance'], $this['permissions_list'], $this['groups_list'],
+            $this['phone_confirmation_code'], $this['notify_balance_sent']);
+
+      if ($this->object->isNew()) {
+          $this->widgetSchema['api_tag_id'] = new sfWidgetFormInput();
+          $this->validatorSchema['api_tag_id'] = new sfValidatorInteger(array('required' => true));
+      } else {
+          $q = TagTable::getInstance()
+            ->createQuery('t')
+            ->where('t.user_id = ?', $this->object->getId())
+            ->orderBy('t.name');
+
+          $this->widgetSchema['api_tag_id'] = new sfWidgetFormDoctrineChoice(array(
+              'add_empty' => true,
+              'model' => 'Tag',
+              'query' => $q,
+          ));
+
+          $this->validatorSchema['api_tag_id'] = new sfValidatorDoctrineChoice(array(
+              'required' => false,
+              'model' => 'Tag',
+              'query' => $q,
+          ));
+      }
   }
 }
