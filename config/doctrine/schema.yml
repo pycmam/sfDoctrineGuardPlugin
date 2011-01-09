@@ -137,6 +137,13 @@ sfGuardUser:
       type: string(255)
       notnull: true
 
+    # часовой пояс
+    timezone:
+      type: string
+      length: 50
+      notnull: true
+      default: 'Europe/Moscow'
+
     password:
       type: string(255)
       notnull: true

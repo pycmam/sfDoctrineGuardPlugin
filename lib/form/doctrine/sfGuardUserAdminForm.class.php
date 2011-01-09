@@ -16,7 +16,8 @@ class sfGuardUserAdminForm extends BasesfGuardUserAdminForm
   public function configure()
   {
       unset($this['balance'], $this['permissions_list'], $this['groups_list'],
-            $this['phone_confirmation_code'], $this['notify_balance_sent']);
+            $this['phone_confirmation_code'], $this['notify_balance_sent'],
+            $this['timezone']);
 
       if ($this->object->isNew()) {
           $this->widgetSchema['api_tag_id'] = new sfWidgetFormInput();
