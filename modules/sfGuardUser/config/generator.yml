@@ -50,7 +50,7 @@ generator:
       form:
         class: sfGuardUserAdminForm
         display:
-          "Аккаунт":                [username, password, password_again, personal_price]
+          "Аккаунт":                [username, password, password_again]
           "Партнеские":             [reward_balance, reward_size]
           "Профиль":                [first_name, last_name, email_address, phone, phone_is_confirmed]
           "API":                    [api_key, api_save_sender, api_save_contacts, api_tag_id]
