@@ -34,11 +34,9 @@ class sfGuardUserActions extends autoSfGuardUserActions
         $user->save();
 
         if (! $user->getLastLogin()) {
-            $this->getMailer()->createAndSend($user->getEmailAddress(),
-                'Ваша заявка на регистрацию на сервисе LittleSMS.ru подтверждена',
-                $this->getPartial('global/mail/activate.txt', array(
-                    'user' => $user,
-                )));
+            $user->sendEmail('signup.activate.mail', array(
+                'user' => $user->toArray(),
+            ));
         }
         $this->redirect('sfGuardUser');
     }
