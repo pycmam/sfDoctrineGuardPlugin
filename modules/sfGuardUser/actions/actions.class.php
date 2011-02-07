@@ -34,7 +34,7 @@ class sfGuardUserActions extends autoSfGuardUserActions
         $user->save();
 
         if (! $user->getLastLogin()) {
-            $user->sendEmail('signup.activate.mail', array(
+            $user->sendEmail('signup.activated.mail', array(
                 'user' => $user->toArray(),
             ));
         }
