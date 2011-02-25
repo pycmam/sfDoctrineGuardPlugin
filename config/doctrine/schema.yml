@@ -79,7 +79,7 @@ sfGuardUser:
     description: string(1024)
 
     # персональная цена на смс
-    personal_price: { type: decimal(5), scale: 2, notnull: true, default: 0 }
+    #personal_price: { type: decimal(5), scale: 2, notnull: true, default: 0 }
 
     # мобильный
     phone: { type: string(12) }
